@@ -8,13 +8,14 @@ This framework fetches the ios Applications of a particular developer from iTune
 ## Demo
 A grouped table view is used to show the categories in sections and the apps in the rows of the specific category.
 
-## Contributing
+## Usage
+1. Copy the DeveloperApps and App Swift classes to your project.
+2. Call `DeveloperApps.getApp(for: "SPECIFY the name of the developer here")` and get the list of the apps in the completion handler.
+2. You can either use the approach used in the demo using UItableView or populate your data in a UICollectionView.
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request! :blush:
+## Questions and Feedback
+
+Feel free to [open an issue](https://github.com/dawand/DeveloperApps/issues/new), or find me [@dawanjiali on Twitter](https://twitter.com/dawanjiali).
 
 ## License
 
