@@ -42,7 +42,9 @@ class MyAppsTableViewController: UITableViewController {
                 self.appObjects.append(Objects(sectionName: key, sectionObjects: value))
             }
             
-            self.tableView.reloadData()
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.tableView.reloadData()
+            })
         }
     }
 
@@ -64,6 +66,8 @@ class MyAppsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyAppsCell", for: indexPath)
 
+        cell.tag = indexPath.row
+
         let app = appObjects[indexPath.section].sectionObjects[indexPath.row]
         
         cell.textLabel?.text = app.name
@@ -76,8 +80,12 @@ class MyAppsTableViewController: UITableViewController {
             }
             
             DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                cell.imageView?.image = image
+                if cell.tag == indexPath.row {
+                    cell.imageView?.contentMode = .scaleAspectFit
+                    let image = UIImage(data: data!)
+                    cell.imageView?.image = image
+                    cell.setNeedsLayout()
+                }
             })
             
         }).resume()
