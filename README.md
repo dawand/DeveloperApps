@@ -2,7 +2,7 @@
 This framework fetches the ios Applications of a particular developer from iTunes store.
 
 <p align="center">
-    <img src="DeveloperAppsScreenshot.png" width="375" max-width="50%" alt="DeveloperApps" />
+    <img src="DeveloperAppsScreenshot-iPhone8.png" width="375" max-width="50%" alt="DeveloperApps" />
 </p>	
 
 ## Demo
