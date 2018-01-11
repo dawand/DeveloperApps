@@ -1,6 +1,7 @@
 # DeveloperApps
 This framework fetches the ios Applications of a particular developer from iTunes store.
 
+![screenshot](DeveloperAppsScreenshot.png){:height="50%" width="50%"}
 ## Demo
 A grouped table view is used to show the categories in sections and the apps in the rows of the specific category.
 
