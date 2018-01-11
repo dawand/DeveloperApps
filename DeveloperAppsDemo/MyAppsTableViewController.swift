@@ -9,6 +9,9 @@
 import UIKit
 import DeveloperApps
 
+// CHANGE this to your own developer
+let DEVELOPER_NAME = "dawand"
+
 class MyAppsTableViewController: UITableViewController {
 
     var categories = Set<String>()
@@ -22,15 +25,28 @@ class MyAppsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DeveloperApps.getApps(for: "dawand") { (apps, error) -> Void in
-            for app in apps! {
+        
+        self.title = "All Apps for \(DEVELOPER_NAME.capitalized) "
+        
+        loadApps()
+    }
+
+    private func loadApps() {
+        DeveloperApps.getApps(for: DEVELOPER_NAME) { (appsList, error) -> Void in
+            
+            guard let apps = appsList else {
+                print("No apps returned for \(DEVELOPER_NAME)")
+                return
+            }
+            
+            for app in apps {
                 let cat = app.category[0]
                 self.categories.insert(cat)
             }
             
             for cat in self.categories {
                 var catApps = [App]()
-                for a in apps! {
+                for a in apps {
                     if a.category[0] == cat {
                         catApps.append(a)
                     }
@@ -47,7 +63,7 @@ class MyAppsTableViewController: UITableViewController {
             })
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
